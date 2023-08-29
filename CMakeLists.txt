@@ -12,11 +12,17 @@ option(SUPPORT_STEALTH "Enable stealth mode" OFF)
 
 configure_file(config.h.in config.h)
 
+# BUILDING
 add_executable(portsentry src/configfile.c  src/portsentry.c  src/portsentry_io.c  src/portsentry_util.c src/state_machine.c)
+add_executable(test_portsentry tests/test_portsentry.c src/portsentry_io.c src/portsentry_util.c src/state_machine.c)
+
 target_include_directories(portsentry PUBLIC "${PROJECT_BINARY_DIR}")
+target_include_directories(test_portsentry PUBLIC "${PROJECT_BINARY_DIR}")
+target_include_directories(test_portsentry PUBLIC "src")
 
 if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
   target_compile_options(portsentry PUBLIC -Wall -Wextra -pedantic)
+  target_compile_options(test_portsentry PUBLIC -Wall -Wextra -pedantic)
 endif()
 
 # FIXME: Hack to get correct build conditions under linux. Platform should be evaluated/selected later
@@ -34,6 +40,17 @@ if (SUPPORT_STEALTH)
   target_compile_definitions(portsentry PUBLIC SUPPORT_STEALTH)
 endif()
 
+# INSTALL
 install(TARGETS portsentry DESTINATION usr/sbin)
 install(FILES examples/portsentry.conf DESTINATION etc/portsentry)
 install(FILES examples/portsentry.ignore DESTINATION etc/portsentry)
+
+# TESTS
+enable_testing()
+
+function(do_test_portsentry arg result)
+  add_test(NAME test_portsentry_${arg} COMMAND test_portsentry ${arg})
+  set_tests_properties(test_portsentry_${arg} PROPERTIES PASS_REGULAR_EXPRESSION ${result})
+endfunction()
+
+do_test_portsentry(state_machine "1: pass\n2: pass")
