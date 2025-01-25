@@ -606,6 +606,8 @@ static int SetupFilter(const struct Device *device) {
     goto exit;
   }
 
+  pcap_freecode(&fp);
+
   status = TRUE;
 
 exit:
