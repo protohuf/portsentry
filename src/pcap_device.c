@@ -78,6 +78,11 @@ int AddAddress(struct Device *device, const char *address, const int type) {
   return TRUE;
 }
 
+int GetNoAddresses(const struct Device *device) {
+  assert(device != NULL);
+  return device->inet4_addrs_count + device->inet6_addrs_count;
+}
+
 int RemoveAddress(struct Device *device, const char *address) {
   assert(device != NULL);
   assert(address != NULL);
