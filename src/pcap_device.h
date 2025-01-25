@@ -30,3 +30,4 @@ uint8_t FreeDevice(struct Device *device);
 int AddAddress(struct Device *device, const char *address, const int type);
 int AddressExists(const struct Device *device, const char *address, const int type);
 int GetNoAddresses(const struct Device *device);
+int RemoveAddress(struct Device *device, const char *address, const int type);
