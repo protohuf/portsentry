@@ -17,6 +17,11 @@ static char **RemoveElementFromArray(char **array, const int index, int *count);
 struct Device *CreateDevice(const char *name) {
   struct Device *new;
 
+  if (name == NULL) {
+    Error("Device name cannot be NULL");
+    return NULL;
+  }
+
   if (strlen(name) > (IF_NAMESIZE - 1)) {
     Error("Device name %s is too long", name);
     return NULL;
