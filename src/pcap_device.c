@@ -39,6 +39,7 @@ int AddAddress(struct Device *device, const char *address, const int type) {
   assert(type == AF_INET || type == AF_INET6);
 
   if (AddressExists(device, address, type) == TRUE) {
+    Debug("When adding address %s to device %s, address already exists", address, device->name);
     return TRUE;
   }
 
