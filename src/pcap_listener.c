@@ -505,7 +505,6 @@ struct Device *FindDeviceByName(const struct ListenerModule *lm, const char *nam
 
   assert(lm != NULL);
   assert(name != NULL);
-  assert(strlen(name) <= (IF_NAMESIZE - 1));
 
   current = lm->root;
   while (current != NULL) {
