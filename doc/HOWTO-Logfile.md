@@ -11,6 +11,8 @@ Scan from: [IP] (HOSTNAME) protocol: [PROTOCOL] port: [PORT] type: [SCAN TYPE] I
 
 Where:
 
+| Key | Description |
+| --- | --- |
 | IP | is the IP address (IPv4 or IPv6) of the source host |
 | HOSTNAME | is the hostname of the source host (if RESOLVED_HOST is set to "1" in the config file) |
 | PROTOCOL | is the protocol of the packet (TCP or UDP) |
