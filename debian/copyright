@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: portsentry
+Upstream-Contact: Marcus Hufvudsson <mh@protohuf.com>
+Source: https://github.com/portsentry
+
+Files: *
+Copyright: 2025 Marcus Hufvudsson <mh@protohuf.com>
+License: BSD-2-Clause
+  https://github.com/portsentry/portsentry/blob/master/LICENSE

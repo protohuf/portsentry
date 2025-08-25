@@ -1,0 +1,19 @@
+Source: portsentry
+Maintainer: Marcus Hufvudsson <mh@protohuf.com>
+Section: net
+Priority: optional
+Build-Depends: debhelper-compat (= 13), cmake, pkg-config, libpcap-dev
+Standards-Version: 4.7.0
+Homepage: https://portsentry.xyz
+
+Package: portsentry
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, logrotate
+Recommends: fail2ban
+Description: Port scan detection and response tool
+ Portsentry monitors network traffic in order to detect port scans in real-time.
+ It can identify several types of scans, including TCP, SYN, FIN, XMAS, NULL scans and UDP probing.
+ It can automatically add the attacker's IP address to the system's firewall or access control list,
+ effectively blocking any further connections from that IP. It can log the details of the scan attempt,
+ including the source IP address, timestamp, and type of scan detected. This information can be useful
+ for forensic analysis and monitoring.
